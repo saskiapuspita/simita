@@ -1,0 +1,29 @@
+<form [formGroup]="formMahasiswa" (ngSubmit)="submitForm()">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput placeholder="Name" value="" formControlName="name">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" value="" formControlName="email">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Nim</mat-label>
+            <input type="text" matInput placeholder="Nim" value="" formControlName="nim">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>IPK</mat-label>
+            <input type="text" matInput placeholder="IPK" formControlName="ipk">
+          </mat-form-field>
+        <!-- <div>
+            <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+        </div> -->
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary">Save</button>
+        <a (click)="closePopUp()" mat-raised-button color="warn">Close</a>
+        <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>
+</form>

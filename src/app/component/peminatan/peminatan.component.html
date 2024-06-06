@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-header>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput value="{{ decodedToken.name }}" readonly="readonly" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>NIM</mat-label>
+      <input matInput value="{{ decodedToken.nim }}" readonly="readonly" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>IPK</mat-label>
+      <input matInput value="{{ decodedToken.ipk }}" readonly="readonly" />
+    </mat-form-field>
+  </mat-card-header>
+</mat-card>
+
+
+<app-create-peminatan></app-create-peminatan>
+<app-tabel-peminatan></app-tabel-peminatan>

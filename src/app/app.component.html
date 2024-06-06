@@ -1,2 +1,5 @@
-<app-menubar></app-menubar>
+<app-menubar *ngIf="isAuthenticated"></app-menubar>
+<div>
+    <router-outlet></router-outlet>
+</div> 
 

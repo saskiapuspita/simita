@@ -1,0 +1,55 @@
+<div class="login-form-flex">
+  <div class="center-content">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Login/Register</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Login">
+            <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+              <mat-form-field class="example-full-width">
+                <mat-label>Nim</mat-label>
+                <input type="text" matInput placeholder="Nim" value="" formControlName="nim">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+              <button mat-button color="primary" [disabled]="!loginForm.valid" mat-raised-button
+                type="submit">Login</button>
+            </form>
+          </mat-tab>
+          <mat-tab label="Register">
+            <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
+              <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput placeholder="Name" value="" formControlName="name">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Email" value="" formControlName="email">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Nim</mat-label>
+                <input type="text" matInput placeholder="Nim" value="" formControlName="nim">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+              </mat-form-field>
+              <button mat-button color="primary" [disabled]="!signupForm.valid" mat-raised-button
+                type="submit">Register</button>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

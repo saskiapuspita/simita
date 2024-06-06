@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput value="{{ decodedToken.name }}" [readonly]="decodedToken.role != 'admin'" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>NIM</mat-label>
+        <input matInput value="{{ decodedToken.nim }}" [readonly]="decodedToken.role != 'admin'" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput value="{{ decodedToken.email }}" [readonly]="decodedToken.role != 'admin'" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>IPK</mat-label>
+        <input matInput value="{{ decodedToken.ipk }}" [readonly]="decodedToken.role != 'admin'" />
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>

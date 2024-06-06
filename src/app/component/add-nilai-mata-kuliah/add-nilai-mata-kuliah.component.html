@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-content>
+        <form *ngIf="isOpen" [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(form.value)" novalidate>
+            <mat-form-field>
+                <mat-label>Nilai</mat-label>
+                <input matInput formControlName="nilai" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select name="mataKuliah" [(value)]="selected" formControlName="mataKuliah">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option value="tht">Teknologi Hasil ternak</mat-option>
+                    <mat-option value="rpt">Reproduksi dan Pemuliaan Ternak</mat-option>
+                    <mat-option value="proter">Nutrisi dan Makanan Ternak</mat-option>
+                    <mat-option value="sosek">Sosial Ekonomi Peternakan</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button color="accent" mat-raised-button type="submit">
+                <span>Submit</span>
+            </button>
+        </form>
+    </mat-card-content>
+</mat-card>

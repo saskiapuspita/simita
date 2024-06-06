@@ -1,0 +1,32 @@
+<!-- <div *ngIf="custdata[0].length > 0"> -->
+<form [formGroup]="formMahasiswa">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <!-- <h2>Nama Mahasiswa : <b>{{custdata[0][0]["name"]}}</b></h2>
+        <h2>Nim Mahasiswa : <b>{{custdata[0][0]["nim"]}}</b></h2>
+        <h2>Email Mahasiswa : <b>{{custdata[0][0]["email"]}}</b></h2>
+        <h2>IPK Mahasiswa : <b>{{custdata[0][0]["ipk"]}}</b></h2> -->
+        <!-- <h2>Status : <b>{{custdata[0][0].status}}</b></h2> -->
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" matInput placeholder="Name" value="" formControlName="name" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Email" value="" formControlName="email" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Nim</mat-label>
+            <input type="text" matInput placeholder="Nim" value="" formControlName="nim"readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>IPK</mat-label>
+            <input type="text" matInput placeholder="IPK" formControlName="ipk" readonly="readonly">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button (click)="closepopup()" mat-raised-button color="warn">Close</button>
+        <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>
+</form>
+<!-- </div> -->
