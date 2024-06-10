@@ -61,6 +61,12 @@
         <mat-list-item *ngIf="decodedToken.role == 'admin'">
             <button routerLink="mastermahasiswa" mat-button><mat-icon>table</mat-icon> Master Mahasiswa</button>
         </mat-list-item>
+        <mat-list-item *ngIf="decodedToken.role == 'admin'">
+            <button routerLink="masterpeminatan" mat-button><mat-icon>table</mat-icon> Master Peminatan</button>
+        </mat-list-item>
+        <mat-list-item *ngIf="decodedToken.role == 'admin'">
+            <button routerLink="mastermatakuliah" mat-button><mat-icon>table</mat-icon> Master Mata Kuliah</button>
+        </mat-list-item>
         <!-- <mat-list-item *ngIf="decodedToken.role == 'admin'">
             <button routerLink="table" mat-button><mat-icon>table</mat-icon> Table</button>
         </mat-list-item> -->

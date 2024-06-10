@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmitDeleteMahasiswa(inputdata.id)">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <h2>Apakah anda yakin akan menghapus data ini ?</h2>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary">Yes</button>
+        <a (click)="closePopUp()" mat-raised-button color="warn">Close</a>
+        <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>
+</form>

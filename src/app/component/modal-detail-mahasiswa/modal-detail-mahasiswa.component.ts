@@ -12,6 +12,7 @@ import { MasterMahasiswaService } from 'src/app/service/master-mahasiswa.service
   templateUrl: './modal-detail-mahasiswa.component.html',
   styleUrls: ['./modal-detail-mahasiswa.component.css'],
 })
+
 export class ModalDetailMahasiswaComponent implements OnInit {
   editdata: any;
   formMahasiswa!: FormGroup;

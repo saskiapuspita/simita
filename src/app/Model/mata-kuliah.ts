@@ -6,5 +6,6 @@ export interface MataKuliah {
   nama: string;
   sks: string;
   minat: Pick<Peminatan, 'id'>;
+  user: Pick<User, 'id'>;
   created: Date;
 }

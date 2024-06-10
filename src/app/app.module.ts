@@ -32,6 +32,16 @@ import { AddMahasiswaComponent } from './component/add-mahasiswa/add-mahasiswa.c
 import { ModalDetailMahasiswaComponent } from './component/modal-detail-mahasiswa/modal-detail-mahasiswa.component';
 import { ModalAddMahasiswaComponent } from './component/modal-add-mahasiswa/modal-add-mahasiswa.component';
 import { ModalDeleteComponent } from './component/modal-delete/modal-delete.component';
+import { MasterPeminatanComponent } from './component/master-peminatan/master-peminatan.component';
+import { ModalAddPeminatanComponent } from './component/modal-add-peminatan/modal-add-peminatan.component';
+import { ModalDetailPeminatanComponent } from './component/modal-detail-peminatan/modal-detail-peminatan.component';
+import { ModalDeleteMahasiswaComponent } from './component/modal-delete-mahasiswa/modal-delete-mahasiswa.component';
+import { ModalDeletePeminatanComponent } from './component/modal-delete-peminatan/modal-delete-peminatan.component';
+import { MasterMataKuliahComponent } from './component/master-mata-kuliah/master-mata-kuliah.component';
+import { ModalAddMataKuliahComponent } from './component/modal-add-mata-kuliah/modal-add-mata-kuliah.component';
+import { ModalDeleteMataKuliahComponent } from './component/modal-delete-mata-kuliah/modal-delete-mata-kuliah.component';
+import { ModalDetailMataKuliahComponent } from './component/modal-detail-mata-kuliah/modal-detail-mata-kuliah.component';
+import { ModalDeletePeminatanMahasiswaComponent } from './component/modal-delete-peminatan-mahasiswa/modal-delete-peminatan-mahasiswa.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +69,17 @@ import { ModalDeleteComponent } from './component/modal-delete/modal-delete.comp
     AddMahasiswaComponent,
     ModalDetailMahasiswaComponent,
     ModalAddMahasiswaComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    MasterPeminatanComponent,
+    ModalAddPeminatanComponent,
+    ModalDetailPeminatanComponent,
+    ModalDeleteMahasiswaComponent,
+    ModalDeletePeminatanComponent,
+    MasterMataKuliahComponent,
+    ModalAddMataKuliahComponent,
+    ModalDeleteMataKuliahComponent,
+    ModalDetailMataKuliahComponent,
+    ModalDeletePeminatanMahasiswaComponent
   ],
   imports: [
     BrowserModule,

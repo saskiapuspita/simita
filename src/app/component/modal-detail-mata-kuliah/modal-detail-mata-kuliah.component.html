@@ -1,0 +1,24 @@
+<form [formGroup]="formMataKuliah">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Nama</mat-label>
+            <input type="text" matInput placeholder="Nama" value="" formControlName="nama" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>SKS</mat-label>
+            <input type="text" matInput placeholder="Sks" value="" formControlName="sks" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Minat</mat-label>
+            <mat-select name="minat" formControlName="minat">
+                <mat-option value="none" disabled="disabled">None</mat-option>
+                <mat-option *ngFor="let item of peminatan$ | async" [value]="item.id">{{ item.nama }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button (click)="closepopup()" mat-raised-button color="warn">Close</button>
+        <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>
+</form>

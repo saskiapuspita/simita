@@ -7,6 +7,7 @@ import { catchError, first } from 'rxjs/operators';
 import { MataKuliah } from '../model/mata-kuliah';
 import { User } from '../model/user';
 import { ErrorHandlerService } from './error-handler.service';
+import { Peminatan } from '../model/peminatan';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,22 @@ export class MataKuliahService {
       );
   }
 
+  fetchMatkulBasedOnIdPeminatan(idPeminatan: number): Observable<any> {
+    return this.http
+      .get<MataKuliah>(
+        `http://localhost:4000/middlewarematakuliah/${idPeminatan}`,
+        this.httpOptions
+      )
+      .pipe(
+        first(),
+        catchError(
+          this.errorHandlerService.handleError<MataKuliah>(
+            'fetchMatkulBasedOnIdPeminatan'
+          )
+        )
+      );
+  }
+
   createMataKuliah(
     formData: Partial<MataKuliah>,
     userId: Pick<User, 'id'>
@@ -40,7 +57,12 @@ export class MataKuliahService {
     return this.http
       .post<MataKuliah>(
         this.url,
-        { nama: formData.nama, sks: formData.sks, minat: formData.minat, user: userId },
+        {
+          nama: formData.nama,
+          sks: formData.sks,
+          minat: formData.minat,
+          user: userId,
+        },
         this.httpOptions
       )
       .pipe(

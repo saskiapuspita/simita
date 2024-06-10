@@ -1,0 +1,17 @@
+<form [formGroup]="formPeminatan" (ngSubmit)="submitForm()">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Nama</mat-label>
+            <input type="text" matInput placeholder="Name" formControlName="nama">
+        </mat-form-field>
+        <!-- <div>
+            <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+        </div> -->
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary">Save</button>
+        <a (click)="closePopUp()" mat-raised-button color="warn">Close</a>
+        <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>
+</form>

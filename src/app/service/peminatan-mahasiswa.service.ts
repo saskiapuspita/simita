@@ -8,12 +8,12 @@ import { catchError, first } from 'rxjs/operators';
 import { PeminatanMahasiswa } from '../model/peminatan-mahasiswa';
 import { User } from '../model/user';
 import { ErrorHandlerService } from './error-handler.service';
+import { NilaiPeminatanMahasiswa } from '../model/nilai-peminatan-mahasiswa';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PeminatanMahasiswaService {
-
   private url = 'http://localhost:4000/peminatanmahasiswa';
 
   httpOptions: { headers: HttpHeaders } = {
@@ -29,7 +29,41 @@ export class PeminatanMahasiswaService {
     return this.http
       .get<PeminatanMahasiswa[]>(this.url, { responseType: 'json' })
       .pipe(
-        catchError(this.errorHandlerService.handleError<PeminatanMahasiswa[]>('fetchAll', []))
+        catchError(
+          this.errorHandlerService.handleError<PeminatanMahasiswa[]>(
+            'fetchAll',
+            []
+          )
+        )
+      );
+  }
+
+  fetchByUserId(userId: Pick<User, 'id'>): Observable<{}> {
+    return this.http
+      .get<PeminatanMahasiswa>(`${this.url}/${userId}`, this.httpOptions)
+      .pipe(
+        first(),
+        catchError(
+          this.errorHandlerService.handleError<PeminatanMahasiswa>(
+            'getPeminatanByUserId'
+          )
+        )
+      );
+  }
+
+  fetchNamaPeminatan(): Observable<PeminatanMahasiswa[]> {
+    return this.http
+      .get<PeminatanMahasiswa[]>(
+        'http://localhost:4000/middlewarepeminatanmahasiswa',
+        { responseType: 'json' }
+      )
+      .pipe(
+        catchError(
+          this.errorHandlerService.handleError<PeminatanMahasiswa[]>(
+            'fetchNamaPeminatan',
+            []
+          )
+        )
       );
   }
 
@@ -40,20 +74,36 @@ export class PeminatanMahasiswaService {
     return this.http
       .post<PeminatanMahasiswa>(
         this.url,
-        { ipk: formData.ipk, pilihanPeminatan: formData.pilihanPeminatan, user: userId },
+        {
+          pilihanPeminatan: formData.pilihanPeminatan,
+          user: userId,
+        },
         this.httpOptions
       )
       .pipe(
-        catchError(this.errorHandlerService.handleError<PeminatanMahasiswa>('createPeminatanMahasiswa'))
+        catchError(
+          this.errorHandlerService.handleError<PeminatanMahasiswa>(
+            'createPeminatanMahasiswa'
+          )
+        )
       );
   }
 
-  deletePeminatanMahasiswa(idPeminatanMahasiswa: Pick<PeminatanMahasiswa, 'id'>): Observable<{}> {
+  deletePeminatanMahasiswa(
+    idPeminatanMahasiswa: Pick<PeminatanMahasiswa, 'id'>
+  ): Observable<{}> {
     return this.http
-      .delete<PeminatanMahasiswa>(`${this.url}/${idPeminatanMahasiswa}`, this.httpOptions)
+      .delete<PeminatanMahasiswa>(
+        `${this.url}/${idPeminatanMahasiswa}`,
+        this.httpOptions
+      )
       .pipe(
         first(),
-        catchError(this.errorHandlerService.handleError<PeminatanMahasiswa>('deletePeminatanMahasiswa'))
+        catchError(
+          this.errorHandlerService.handleError<PeminatanMahasiswa>(
+            'deletePeminatanMahasiswa'
+          )
+        )
       );
   }
 }
