@@ -18,6 +18,7 @@ import { UserProfileComponent } from './component/user-profile/user-profile.comp
 import { MasterMahasiswaComponent } from './component/master-mahasiswa/master-mahasiswa.component';
 import { MasterPeminatanComponent } from './component/master-peminatan/master-peminatan.component';
 import { MasterMataKuliahComponent } from './component/master-mata-kuliah/master-mata-kuliah.component';
+import { MasterDosenComponent } from './component/master-dosen/master-dosen.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuardService] },
@@ -58,6 +59,11 @@ const routes: Routes = [
   {
     path: 'mastermatakuliah',
     component: MasterMataKuliahComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'masterdosen',
+    component: MasterDosenComponent,
     canActivate: [AuthGuardService],
   },
 ];

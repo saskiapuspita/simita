@@ -172,8 +172,6 @@ export class CreatePeminatanComponent implements OnInit {
       return;
     }
     const peminatanId = parseInt(pilihanPeminatan);
-    console.log('peminatanId: ' + peminatanId);
-    console.log('pilihanPeminatan: ' + pilihanPeminatan);
     this.mataKuliahService.fetchMatkulBasedOnIdPeminatan(peminatanId).subscribe(
       (response) => {
         this.mataKuliah$ = response.data;

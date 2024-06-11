@@ -42,6 +42,10 @@ import { ModalAddMataKuliahComponent } from './component/modal-add-mata-kuliah/m
 import { ModalDeleteMataKuliahComponent } from './component/modal-delete-mata-kuliah/modal-delete-mata-kuliah.component';
 import { ModalDetailMataKuliahComponent } from './component/modal-detail-mata-kuliah/modal-detail-mata-kuliah.component';
 import { ModalDeletePeminatanMahasiswaComponent } from './component/modal-delete-peminatan-mahasiswa/modal-delete-peminatan-mahasiswa.component';
+import { MasterDosenComponent } from './component/master-dosen/master-dosen.component';
+import { ModalAddDosenComponent } from './component/modal-add-dosen/modal-add-dosen.component';
+import { ModalDeleteDosenComponent } from './component/modal-delete-dosen/modal-delete-dosen.component';
+import { ModalDetailDosenComponent } from './component/modal-detail-dosen/modal-detail-dosen.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +83,11 @@ import { ModalDeletePeminatanMahasiswaComponent } from './component/modal-delete
     ModalAddMataKuliahComponent,
     ModalDeleteMataKuliahComponent,
     ModalDetailMataKuliahComponent,
-    ModalDeletePeminatanMahasiswaComponent
+    ModalDeletePeminatanMahasiswaComponent,
+    MasterDosenComponent,
+    ModalAddDosenComponent,
+    ModalDeleteDosenComponent,
+    ModalDetailDosenComponent
   ],
   imports: [
     BrowserModule,

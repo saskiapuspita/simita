@@ -41,13 +41,13 @@ export class AuthService {
   }
 
   login(
-    nim: Pick<User, 'nim'>,
+    email: Pick<User, 'email'>,
     password: Pick<User, 'password'>
   ): Observable<TokenAndId> {
     return this.http
       .post<TokenAndId>(
         `${this.url}/login`,
-        { nim, password },
+        { email, password },
         this.httpOptions
       )
       .pipe(
@@ -55,8 +55,6 @@ export class AuthService {
         tap((tokenObject: TokenAndId) => {
           this.userId = tokenObject.userId;
           localStorage.setItem('token', tokenObject.token);
-          // console.log('user logged name: ' + tokenObject.name);
-          // console.log('user logged email: ' + tokenObject.email);
           this.isUserLoggedIn$.next(true);
           this.router.navigate(['dashboard']);
         }),

@@ -9,8 +9,8 @@
           <mat-tab label="Login">
             <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
               <mat-form-field class="example-full-width">
-                <mat-label>Nim</mat-label>
-                <input type="text" matInput placeholder="Nim" value="" formControlName="nim">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Email" value="" formControlName="email">
                 <mat-icon matSuffix>email</mat-icon>
               </mat-form-field>
               <mat-form-field class="example-full-width">
@@ -22,7 +22,7 @@
                 type="submit">Login</button>
             </form>
           </mat-tab>
-          <mat-tab label="Register">
+          <!-- <mat-tab label="Register">
             <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
               <mat-form-field class="example-full-width">
                 <mat-label>Name</mat-label>
@@ -47,7 +47,7 @@
               <button mat-button color="primary" [disabled]="!signupForm.valid" mat-raised-button
                 type="submit">Register</button>
             </form>
-          </mat-tab>
+          </mat-tab> -->
         </mat-tab-group>
       </mat-card-content>
     </mat-card>

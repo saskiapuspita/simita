@@ -22,7 +22,8 @@ export class LoginComponent {
 
   createLoginFormGroup(): FormGroup {
     return new FormGroup({
-      nim: new FormControl('', [Validators.required]),
+      // nim: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(7),
@@ -44,7 +45,7 @@ export class LoginComponent {
 
   login(): void {
     this.authService
-      .login(this.loginForm.value.nim, this.loginForm.value.password)
+      .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe();
   }
 
