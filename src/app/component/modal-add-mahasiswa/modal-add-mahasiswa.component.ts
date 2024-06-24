@@ -54,14 +54,12 @@ export class ModalAddMahasiswaComponent implements OnInit {
     });
   }
 
-  submitForm() 
-  {
-       if(this.inputdata.id > 0){
-        this.onSubmitUpdateMahasiswa(this.formMahasiswa.value, this.inputdata.id);
-       }
-       else{
-        this.onSubmitAddMahasiswa(this.formMahasiswa.value);
-      }
+  submitForm() {
+    if (this.inputdata.id > 0) {
+      this.onSubmitUpdateMahasiswa(this.formMahasiswa.value, this.inputdata.id);
+    } else {
+      this.onSubmitAddMahasiswa(this.formMahasiswa.value);
+    }
   }
 
   onSubmitAddMahasiswa(
@@ -73,10 +71,13 @@ export class ModalAddMahasiswaComponent implements OnInit {
   }
 
   onSubmitUpdateMahasiswa(
-    formMahasiswa: Pick<User, 'name' | 'nim' | 'email' | 'ipk'>, userId: Pick<User, 'id'>
+    formMahasiswa: Pick<User, 'name' | 'nim' | 'email' | 'ipk'>,
+    userId: Pick<User, 'id'>
   ): void {
-    this.masterMahasiswaService.updateUser(formMahasiswa, userId).subscribe(() => {
-      this.closePopUp();
-    });
+    this.masterMahasiswaService
+      .updateUser(formMahasiswa, userId)
+      .subscribe(() => {
+        this.closePopUp();
+      });
   }
 }

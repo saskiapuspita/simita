@@ -46,6 +46,8 @@ import { MasterDosenComponent } from './component/master-dosen/master-dosen.comp
 import { ModalAddDosenComponent } from './component/modal-add-dosen/modal-add-dosen.component';
 import { ModalDeleteDosenComponent } from './component/modal-delete-dosen/modal-delete-dosen.component';
 import { ModalDetailDosenComponent } from './component/modal-detail-dosen/modal-detail-dosen.component';
+import { RekapitulasiPeminatanComponent } from './component/rekapitulasi-peminatan/rekapitulasi-peminatan.component';
+import { FinalisePeminatanMahasiswaComponent } from './component/finalise-peminatan-mahasiswa/finalise-peminatan-mahasiswa.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { ModalDetailDosenComponent } from './component/modal-detail-dosen/modal-
     MasterDosenComponent,
     ModalAddDosenComponent,
     ModalDeleteDosenComponent,
-    ModalDetailDosenComponent
+    ModalDetailDosenComponent,
+    RekapitulasiPeminatanComponent,
+    FinalisePeminatanMahasiswaComponent
   ],
   imports: [
     BrowserModule,

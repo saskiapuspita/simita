@@ -196,6 +196,7 @@
 
 <mat-card>
     <mat-card-content>
+        <h2>Pilihlah urutan minat 1 - 5 sesuai prioritas saudara.</h2>
         <button (click)="isOpen = !isOpen" mat-raised-button color="primary">
             <mat-icon>add</mat-icon>Tambah Peminatan
         </button>
@@ -221,8 +222,8 @@
 
             <mat-form-field class="mat-75"
                 *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
-                <mat-label>Pilih Mata Kuliah</mat-label>
-                <mat-select name="idMatkul" formControlName="idMatkul">
+                <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+                <mat-select name="idMatkul1" formControlName="idMatkul1">
                     <mat-option value="none" disabled="disabled">None</mat-option>
                     <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
                 </mat-select>
@@ -231,7 +232,99 @@
             <mat-form-field class="mat-25"
                 *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
                 <mat-label>Nilai</mat-label>
-                <mat-select name="nilai" formControlName="nilai">
+                <mat-select name="nilaiMatkul1" formControlName="nilaiMatkul1">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B+">B+</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="C+">C+</mat-option>
+                    <mat-option value="D">D</mat-option>
+                    <mat-option value="E">E</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-75"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+                <mat-select name="idMatkul2" formControlName="idMatkul2">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-25"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Nilai</mat-label>
+                <mat-select name="nilaiMatkul2" formControlName="nilaiMatkul2">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B+">B+</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="C+">C+</mat-option>
+                    <mat-option value="D">D</mat-option>
+                    <mat-option value="E">E</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-75"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+                <mat-select name="idMatkul2" formControlName="idMatkul3">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-25"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Nilai</mat-label>
+                <mat-select name="nilaiMatkul2" formControlName="nilaiMatkul3">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B+">B+</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="C+">C+</mat-option>
+                    <mat-option value="D">D</mat-option>
+                    <mat-option value="E">E</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-75"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+                <mat-select name="idMatkul4" formControlName="idMatkul4">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-25"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Nilai</mat-label>
+                <mat-select name="nilaiMatkul4" formControlName="nilaiMatkul4">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B+">B+</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="C+">C+</mat-option>
+                    <mat-option value="D">D</mat-option>
+                    <mat-option value="E">E</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-75"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+                <mat-select name="idMatkul5" formControlName="idMatkul5">
+                    <mat-option value="none" disabled="disabled">None</mat-option>
+                    <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="mat-25"
+                *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+                <mat-label>Nilai</mat-label>
+                <mat-select name="nilaiMatkul5" formControlName="nilaiMatkul5">
                     <mat-option value="none" disabled="disabled">None</mat-option>
                     <mat-option value="A">A</mat-option>
                     <mat-option value="B+">B+</mat-option>

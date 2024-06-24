@@ -8,18 +8,13 @@ import {
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { PeminatanMahasiswa } from 'src/app/model/peminatan-mahasiswa';
 import { Peminatan } from 'src/app/model/peminatan';
 import { MataKuliah } from 'src/app/model/mata-kuliah';
 import { User } from 'src/app/model/user';
 import { AuthService } from 'src/app/service/auth.service';
 import { PeminatanService } from 'src/app/service/peminatan.service';
-import { PeminatanMahasiswaService } from 'src/app/service/peminatan-mahasiswa.service';
 import { MataKuliahService } from 'src/app/service/mata-kuliah.service';
-import { NilaiMataKuliahService } from 'src/app/service/nilai-mata-kuliah.service';
-import { NilaiMataKuliah } from 'src/app/model/nilai-mata-kuliah';
 import { NilaiPeminatanMahasiswa } from 'src/app/model/nilai-peminatan-mahasiswa';
-import { MatSelectChange } from '@angular/material/select';
 import { NilaiPeminatanMahasiswaService } from 'src/app/service/nilai-peminatan-mahasiswa.service';
 
 @Component({
@@ -32,15 +27,15 @@ export class CreatePeminatanComponent implements OnInit {
   @Output() create: EventEmitter<any> = new EventEmitter();
 
   formPeminatanMahasiswa!: FormGroup;
-  formNilaiMataKuliah!: FormGroup;
+  // formNilaiMataKuliah!: FormGroup;
   formNilaiPeminatanMahasiswa!: FormGroup;
   decodedToken: any;
-  selected = 'none';
-  numRegex = /^\d+\.\d{2}$/;
-  peminatanOptionValue: any;
+  // selected = 'none';
+  // numRegex = /^\d+\.\d{2}$/;
+  // peminatanOptionValue: any;
   peminatan$!: Observable<Peminatan[]>;
   mataKuliah$!: any; //Observable<MataKuliah[]>;
-  dataMataKuliah: any;
+  // dataMataKuliah: any;
   userId!: Pick<User, 'id'>;
   selectedPeminatan: any;
 
@@ -50,22 +45,15 @@ export class CreatePeminatanComponent implements OnInit {
     private authService: AuthService,
     private peminatanService: PeminatanService,
     private mataKuliahService: MataKuliahService,
-    private peminatanMahasiswaService: PeminatanMahasiswaService,
-    private nilaiMataKuliahService: NilaiMataKuliahService,
     private nilaiPeminatanMahasiswaService: NilaiPeminatanMahasiswaService
   ) {}
 
   ngOnInit(): void {
+    this.decodedToken = this.authService.decodeToken();
     this.peminatan$ = this.fetchAllPeminatan();
     this.mataKuliah$ = this.fetchAllMataKuliah();
-    // this.mataKuliah$ = this.fetchMatkulBasedOnIdPeminatan();
     this.userId = this.authService.userId;
-
-    this.formPeminatanMahasiswa = this.createPeminatanFormGroup();
-    this.formNilaiMataKuliah = this.createNilaiMataKuliahFormGroup();
     this.formNilaiPeminatanMahasiswa = this.createNilaiPeminatanFormGroup();
-
-    this.decodedToken = this.authService.decodeToken();
   }
 
   fetchAllPeminatan(): Observable<Peminatan[]> {
@@ -82,72 +70,38 @@ export class CreatePeminatanComponent implements OnInit {
     );
   }
 
-  createPeminatanFormGroup(): FormGroup {
-    return new FormGroup({
-      // ipk: new FormControl('', [
-      //   Validators.required,
-      //   Validators.pattern(this.numRegex),
-      // ]),
-      pilihanPeminatan: new FormControl('', [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
-      mataKuliah: new FormControl('', [
-        Validators.required,
-        Validators.minLength(10),
-      ]),
-      nilai: new FormControl('', [Validators.required]),
-    });
-  }
-
-  createNilaiMataKuliahFormGroup(): FormGroup {
-    return new FormGroup({
-      nilai: new FormControl('', [Validators.required]),
-      mataKuliah: new FormControl('', [Validators.required]),
-    });
-  }
-
   createNilaiPeminatanFormGroup(): FormGroup {
     return new FormGroup({
       idPeminatan: new FormControl('', [Validators.required]),
       urutanMinat: new FormControl('', [Validators.required]),
-      idMatkul: new FormControl('', [Validators.required]),
-      nilai: new FormControl('', [Validators.required]),
+      idMatkul1: new FormControl('', [Validators.required]),
+      nilaiMatkul1: new FormControl('', [Validators.required]),
+      idMatkul2: new FormControl('', [Validators.required]),
+      nilaiMatkul2: new FormControl('', [Validators.required]),
+      idMatkul3: new FormControl('', [Validators.required]),
+      nilaiMatkul3: new FormControl('', [Validators.required]),
+      idMatkul4: new FormControl('', [Validators.required]),
+      nilaiMatkul4: new FormControl('', [Validators.required]),
+      idMatkul5: new FormControl('', [Validators.required]),
+      nilaiMatkul5: new FormControl('', [Validators.required]),
     });
-  }
-
-  onSubmitPeminatanMahasiswa(
-    formPeminatanMahasiswa: Pick<PeminatanMahasiswa, 'pilihanPeminatan'>
-  ) {
-    console.log(formPeminatanMahasiswa);
-    this.peminatanMahasiswaService
-      .createPeminatanMahasiswa(formPeminatanMahasiswa, this.authService.userId)
-      .pipe(first())
-      .subscribe(() => {
-        this.create.emit(null);
-      });
-  }
-
-  onSubmitNilaiMataKuliah(
-    formNilaiMataKuliah: Pick<NilaiMataKuliah, 'nilai' | 'mataKuliah'>
-  ): void {
-    console.log(formNilaiMataKuliah);
-    this.nilaiMataKuliahService
-      .createNilaiMataKuliah(formNilaiMataKuliah, this.authService.userId)
-      .pipe(first())
-      .subscribe(() => {
-        this.create.emit(null);
-      });
-
-    this.formNilaiMataKuliah.reset();
-    this.formPeminatanMahasiswa.reset();
-    this.formDirective.resetForm();
   }
 
   onSubmitNilaiPeminatanMahasiswa(
     formNilaiPeminatanMahasiswa: Pick<
       NilaiPeminatanMahasiswa,
-      'idPeminatan' | 'idMatkul' | 'nilai'
+      | 'idPeminatan'
+      | 'urutanMinat'
+      | 'idMatkul1'
+      | 'nilaiMatkul1'
+      | 'idMatkul2'
+      | 'nilaiMatkul2'
+      | 'idMatkul3'
+      | 'nilaiMatkul3'
+      | 'idMatkul4'
+      | 'nilaiMatkul4'
+      | 'idMatkul5'
+      | 'nilaiMatkul5'
     >
   ): void {
     console.log(formNilaiPeminatanMahasiswa);
@@ -183,48 +137,4 @@ export class CreatePeminatanComponent implements OnInit {
       }
     );
   }
-
-  // change(event: any) {
-  //   if (event.isUserInput) {
-  //     console.log(event.source.value);
-
-  //     // this.applyFilter(event.source.value);
-  //     // this.mataKuliahService
-  //     // .fetchMatkulBasedOnIdPeminatan(event.source.value)
-  //     // .subscribe((data) => {
-  //     //   this.filteredMataKuliah$ = data;
-  //     //   console.log('matkul retrieved ' + this.filteredMataKuliah$.value);
-  //     // });
-  //     // return (this.selectedValue = event.source.value);
-  //     // this.formPeminatanMahasiswa.get('pilihanPeminatan').patchValue(event.source.value);
-  //     // this.mataKuliahService.fetchMatkulBasedOnIdPeminatan(event.source.value).subscribe((res) => {
-  //     //   this.dataMataKuliah = res;
-  //     //   this.mataKuliah$ = this.dataMataKuliah[0];
-  //     //   console.log("matakuliah: " + this.mataKuliah$.nama);
-  //     // this.dataSource = new MatTableDataSource<Customer>(this.customerlist);
-  //     // this.dataSource.paginator = this.paginatior;
-  //     // this.dataSource.sort = this.sort;
-  //     // let findedData =  this.mataKuliahService.fetchAll().find(x => x.id == this.personId);
-  //     // var index = this.mataKuliah$.findIndex((obj: { minat: number; }) => obj.minat === event.source.value);
-  //     // console.log("index: " + index);
-  //   }
-  // }
-
-  // filterMatkulBySelectedPeminatan(idPeminatan: any) {
-  //   this.filteredMataKuliah$ = this.mataKuliah$.find((i: { minat: any; }) => i.minat === idPeminatan);
-  //   console.log("filteredMataKuliah: " + this.filteredMataKuliah$);
-  //   if (typeof this.filteredMataKuliah$ === 'undefined') {
-  //     return null;
-  //   }
-  //   return this.filteredMataKuliah$;
-  // }
-
-  // onPeminatanSelected(selectedPeminatanId: any) {
-  //   this.mataKuliahService
-  //     .fetchMatkulBasedOnIdPeminatan(selectedPeminatanId)
-  //     .subscribe((data) => {
-  //       this.filteredMataKuliah$ = data;
-  //       console.log('matkul retrieved ' + this.filteredMataKuliah$);
-  //     });
-  // }
 }

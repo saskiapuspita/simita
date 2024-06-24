@@ -1,17 +1,17 @@
-mat-card{
+mat-card {
     margin: 2%;
 }
 
-button{
+button {
     margin: 2px;
 }
 
-th{
+th {
     background-color: black !important;
     color: white;
 }
 
-.mat-50{
+.mat-50 {
     width: 48%;
     margin: 1%;
 }
@@ -19,4 +19,24 @@ th{
 .mat-mdc-form-field {
     width: 98%;
     margin: 1%;
+}
+
+.scroll {
+    width: 100px;
+    overflow-x: scroll;
+}
+
+.mat-75 {
+    width: 73%;
+    margin: 1%;
+}
+
+.mat-25 {
+    width: 23%;
+    margin: 1%;
+}
+
+.table-responsive {
+    display: block;
+    overflow-x: scroll;
 }

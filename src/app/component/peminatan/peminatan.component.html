@@ -15,12 +15,145 @@
   </mat-card-header>
 </mat-card>
 
-<app-create-peminatan></app-create-peminatan>
-<!-- <app-tabel-peminatan></app-tabel-peminatan> -->
+<mat-card>
+  <mat-card-content>
+    <h2>Pilihlah urutan minat 1 - 5 sesuai prioritas saudara.</h2>
+    <button (click)="isOpen = !isOpen" mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>Tambah Peminatan
+    </button>
+    <form *ngIf="isOpen" [formGroup]="formNilaiPeminatanMahasiswa" #formDirective="ngForm"
+      (ngSubmit)="onSubmitNilaiPeminatanMahasiswa(formNilaiPeminatanMahasiswa.value)" novalidate>
+      <mat-form-field class="mat-75">
+        <mat-label>Pilih Peminatan</mat-label>
+        <mat-select name="idPeminatan" [formControlName]="'idPeminatan'" id="idPeminatan" name="idPeminatan"
+          (valueChange)="selectPeminatan($event)" [(value)]="selectedPeminatan">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option *ngFor="let item of peminatan$ | async" [value]="item.id">{{ item.nama }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-25">
+        <mat-label>Urutan Peminatan</mat-label>
+        <mat-select name="urutanMinat" formControlName="urutanMinat" id="urutanMinat" name="urutanMinat">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option *ngFor="let item of peminatan$ | async; let i = index" [value]="i+1">{{i+1}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-75" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+        <mat-select name="idMatkul1" formControlName="idMatkul1">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-25" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Nilai</mat-label>
+        <mat-select name="nilaiMatkul1" formControlName="nilaiMatkul1">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option value="A">A</mat-option>
+          <mat-option value="B+">B+</mat-option>
+          <mat-option value="B">B</mat-option>
+          <mat-option value="C+">C+</mat-option>
+          <mat-option value="D">D</mat-option>
+          <mat-option value="E">E</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-75" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+        <mat-select name="idMatkul2" formControlName="idMatkul2">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-25" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Nilai</mat-label>
+        <mat-select name="nilaiMatkul2" formControlName="nilaiMatkul2">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option value="A">A</mat-option>
+          <mat-option value="B+">B+</mat-option>
+          <mat-option value="B">B</mat-option>
+          <mat-option value="C+">C+</mat-option>
+          <mat-option value="D">D</mat-option>
+          <mat-option value="E">E</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-75" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+        <mat-select name="idMatkul2" formControlName="idMatkul3">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-25" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Nilai</mat-label>
+        <mat-select name="nilaiMatkul2" formControlName="nilaiMatkul3">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option value="A">A</mat-option>
+          <mat-option value="B+">B+</mat-option>
+          <mat-option value="B">B</mat-option>
+          <mat-option value="C+">C+</mat-option>
+          <mat-option value="D">D</mat-option>
+          <mat-option value="E">E</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-75" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+        <mat-select name="idMatkul4" formControlName="idMatkul4">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-25" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Nilai</mat-label>
+        <mat-select name="nilaiMatkul4" formControlName="nilaiMatkul4">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option value="A">A</mat-option>
+          <mat-option value="B+">B+</mat-option>
+          <mat-option value="B">B</mat-option>
+          <mat-option value="C+">C+</mat-option>
+          <mat-option value="D">D</mat-option>
+          <mat-option value="E">E</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-75" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Pilih Mata Kuliah Wajib Minat</mat-label>
+        <mat-select name="idMatkul5" formControlName="idMatkul5">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option *ngFor="let item of mataKuliah$" [value]="item.id">{{ item.nama }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mat-25" *ngIf="formNilaiPeminatanMahasiswa.get('idPeminatan')?.value == selectedPeminatan">
+        <mat-label>Nilai</mat-label>
+        <mat-select name="nilaiMatkul5" formControlName="nilaiMatkul5">
+          <mat-option value="none" disabled="disabled">None</mat-option>
+          <mat-option value="A">A</mat-option>
+          <mat-option value="B+">B+</mat-option>
+          <mat-option value="B">B</mat-option>
+          <mat-option value="C+">C+</mat-option>
+          <mat-option value="D">D</mat-option>
+          <mat-option value="E">E</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button color="accent" mat-raised-button type="submit">
+        <span>Submit</span>
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
 
 <mat-card>
-
-  <mat-card-content>
+  <mat-card-content class="table-responsive">
     <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="no">
         <th mat-sort-header mat-header-cell *matHeaderCellDef> No.</th>
@@ -37,25 +170,163 @@
         <td mat-cell *matCellDef="let element">{{element.urutanMinat}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="namamatkul">
+      <ng-container matColumnDef="namamatkul1">
         <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
-        <td mat-cell *matCellDef="let element">{{element.namaMatkul}}</td>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul1}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="nilai">
-        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai</th>
-        <td mat-cell *matCellDef="let element">{{element.nilai}}</td>
+      <ng-container matColumnDef="nilaimatkul1">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul1}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="namamatkul2">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul2}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul2">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul2}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul3">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul3}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul3">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul3}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul4">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul4}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul4">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul4}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul5">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul5}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul5">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul5}}</td>
+      </ng-container>
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action</th>
         <td mat-cell *matCellDef="let element">
 
-          <!-- <button (click)="editcustomer(element.id)" mat-raised-button color="primary">Edit</button> -->
-          <button (click)="deletePeminatanMahasiswa(element.pilihanPeminatan)" mat-raised-button
-            color="warn">Delete</button>
+          <button (click)="submitFinalisePeminatanMahasiswa(element.id)" mat-raised-button color="primary">Submit Peminatan</button>
+          <button (click)="deletePeminatanMahasiswa(element.id)" mat-raised-button color="warn">Delete</button>
           <!-- <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button> -->
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+
+    </table>
+
+  </mat-card-content>
+  <br>
+  <mat-card-footer>
+
+    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+
+  </mat-card-footer>
+</mat-card>
+
+
+
+<!-- <app-create-peminatan></app-create-peminatan> -->
+<!-- <app-tabel-peminatan></app-tabel-peminatan> -->
+
+<!-- <mat-card>
+
+  <mat-card-content>
+    <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8 scroll">
+      <ng-container matColumnDef="no">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> No.</th>
+        <td mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namapeminatan">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Peminatan</th>
+        <td mat-cell *matCellDef="let element">{{element.namaPeminatan}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="urutanMinat">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Urutan Peminatan</th>
+        <td mat-cell *matCellDef="let element">{{element.urutanMinat}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul1">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul1">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul1}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul2">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul2}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul2">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul2}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul3">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul3}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul3">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul3}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul4">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul4}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul4">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul4}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="namamatkul5">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nama Mata Kuliah</th>
+        <td mat-cell *matCellDef="let element">{{element.namaMatkul5}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nilaimatkul5">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Nilai Matkul</th>
+        <td mat-cell *matCellDef="let element">{{element.nilaiMatkul5}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <td mat-cell *matCellDef="let element">
+
+          <button (click)="editcustomer(element.id)" mat-raised-button color="primary">Edit</button>
+          <button (click)="deletePeminatanMahasiswa(element.id)" mat-raised-button
+            color="warn">Delete</button>
+          <button (click)="detailcustomer(element.id)" mat-raised-button color="primary">Detail</button>
         </td>
       </ng-container>
 
@@ -72,4 +343,4 @@
     <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
   </mat-card-footer>
 
-</mat-card>
+</mat-card> -->

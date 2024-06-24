@@ -7,9 +7,18 @@ export interface NilaiPeminatanMahasiswa {
   idPeminatan: Pick<Peminatan, 'id'>;
   urutanMinat: number;
   namaPeminatan: string;
-  idMatkul: Pick<MataKuliah, 'id'>;
   namaMatkul: string;
-  nilai: string;
+  idMatkul1: Pick<MataKuliah, 'id'>;
+  nilaiMatkul1: string;
+  idMatkul2: Pick<MataKuliah, 'id'>;
+  nilaiMatkul2: string;
+  idMatkul3: Pick<MataKuliah, 'id'>;
+  nilaiMatkul3: string;
+  idMatkul4: Pick<MataKuliah, 'id'>;
+  nilaiMatkul4: string;
+  idMatkul5: Pick<MataKuliah, 'id'>;
+  nilaiMatkul5: string;
+  isFinalSubmit: boolean;
   user: Pick<User, 'id'>;
   created: Date;
 }

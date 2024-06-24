@@ -4,8 +4,8 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { PeminatanMahasiswa } from 'src/app/model/peminatan-mahasiswa';
-import { PeminatanMahasiswaService } from 'src/app/service/peminatan-mahasiswa.service';
+import { NilaiPeminatanMahasiswa } from 'src/app/model/nilai-peminatan-mahasiswa';
+import { NilaiPeminatanMahasiswaService } from 'src/app/service/nilai-peminatan-mahasiswa.service';
 
 @Component({
   selector: 'app-modal-delete-peminatan-mahasiswa',
@@ -18,7 +18,7 @@ export class ModalDeletePeminatanMahasiswaComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ref: MatDialogRef<ModalDeletePeminatanMahasiswaComponent>,
-    private peminatanMahasiswaService: PeminatanMahasiswaService
+    private nilaiPeminatanMahasiswaService: NilaiPeminatanMahasiswaService
   ) {}
 
   ngOnInit(): void {
@@ -29,8 +29,8 @@ export class ModalDeletePeminatanMahasiswaComponent implements OnInit {
     this.ref.close('closing from detail');
   }
 
-  onSubmitDeletePeminatanMahasiswa(idPeminatanMahasiswa: Pick<PeminatanMahasiswa, 'id'>): void {
-    this.peminatanMahasiswaService.deletePeminatanMahasiswa(idPeminatanMahasiswa).subscribe(() => {
+  onSubmitDeletePeminatanMahasiswa(id: Pick<NilaiPeminatanMahasiswa, 'id'>): void {
+    this.nilaiPeminatanMahasiswaService.deleteNilaiPeminatanMahasiswa(id).subscribe(() => {
       this.closePopUp();
     });
   }

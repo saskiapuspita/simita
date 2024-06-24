@@ -50,13 +50,16 @@ export class NilaiPeminatanMahasiswaService {
       );
   }
 
-  fetchNamaPeminatanNamaMatkulNilai(): Observable<NilaiPeminatanMahasiswa[]> {
+  fetchNamaPeminatanNamaMatkulNilai(
+    userId: number
+  ): Observable<NilaiPeminatanMahasiswa[]> {
     return this.http
       .get<NilaiPeminatanMahasiswa[]>(
-        'http://localhost:4000/middlewarenilaipeminatanmahasiswa',
-        { responseType: 'json' }
+        `http://localhost:4000/middlewarenilaipeminatanmahasiswa/${userId}`,
+        this.httpOptions
       )
       .pipe(
+        first(),
         catchError(
           this.errorHandlerService.handleError<NilaiPeminatanMahasiswa[]>(
             'fetchNamaPeminatanNamaMatkulNilai',
@@ -70,19 +73,22 @@ export class NilaiPeminatanMahasiswaService {
     formData: Partial<NilaiPeminatanMahasiswa>,
     userId: Pick<User, 'id'>
   ): Observable<NilaiPeminatanMahasiswa> {
-    console.log("form data idPeminatan: " + formData.idPeminatan);
-    console.log("form data urutanMinat: " + formData.urutanMinat);
-    console.log("form data idMatkul: " + formData.idMatkul);
-    console.log("form data nilai: " + formData.nilai);
-    console.log("form data user: " + userId);
     return this.http
       .post<NilaiPeminatanMahasiswa>(
         this.url,
         {
           idPeminatan: formData.idPeminatan,
           urutanMinat: formData.urutanMinat,
-          idMatkul: formData.idMatkul,
-          nilai: formData.nilai,
+          idMatkul1: formData.idMatkul1,
+          nilaiMatkul1: formData.nilaiMatkul1,
+          idMatkul2: formData.idMatkul2,
+          nilaiMatkul2: formData.nilaiMatkul2,
+          idMatkul3: formData.idMatkul3,
+          nilaiMatkul3: formData.nilaiMatkul3,
+          idMatkul4: formData.idMatkul4,
+          nilaiMatkul4: formData.nilaiMatkul4,
+          idMatkul5: formData.idMatkul5,
+          nilaiMatkul5: formData.nilaiMatkul5,
           user: userId,
         },
         this.httpOptions
@@ -109,6 +115,28 @@ export class NilaiPeminatanMahasiswaService {
         catchError(
           this.errorHandlerService.handleError<NilaiPeminatanMahasiswa>(
             'deleteNilaiPeminatanMahasiswa'
+          )
+        )
+      );
+  }
+
+  updateIsFinalSubmit(
+    formData: Partial<NilaiPeminatanMahasiswa>,
+    idNilaiPeminatanMahasiswa: Pick<NilaiPeminatanMahasiswa, 'id'>
+  ): Observable<NilaiPeminatanMahasiswa> {
+    var intFinalSubmit = formData.isFinalSubmit ? 1 : 0;
+    return this.http
+      .patch<NilaiPeminatanMahasiswa>(
+        `${this.url}/${idNilaiPeminatanMahasiswa}`,
+        {
+          isFinalSubmit: intFinalSubmit,
+        },
+        this.httpOptions
+      )
+      .pipe(
+        catchError(
+          this.errorHandlerService.handleError<NilaiPeminatanMahasiswa>(
+            'updateIsFinalSubmit'
           )
         )
       );
