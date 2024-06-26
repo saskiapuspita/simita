@@ -1,0 +1,36 @@
+<form [formGroup]="formPengajuanJudulPenelitian" (ngSubmit)="submitForm()">
+    <h1 mat-dialog-title>{{inputdata.title}}</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Nama Judul Penelitian</mat-label>
+            <input type="text" matInput placeholder="Nama Judul Penelitian" formControlName="namaJudulPenelitian">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Lokasi Penelitian</mat-label>
+            <input type="text" matInput placeholder="Lokasi Penelitian" formControlName="lokasiPenelitian">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Dosen Pembimbing</mat-label>
+            <mat-select name="idDosenPembimbing" formControlName="idDosenPembimbing">
+                <mat-option value="none" disabled="disabled">None</mat-option>
+                <mat-option *ngFor="let item of dosenPembimbing$ | async" [value]="item.id">{{ item.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Minat</mat-label>
+            <mat-select name="idPeminatan" formControlName="idPeminatan">
+                <mat-option value="none" disabled="disabled">None</mat-option>
+                <mat-option *ngFor="let item of peminatan$ | async" [value]="item.id">{{ item.nama }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- <div>
+            <mat-checkbox formControlName="status">Is Active</mat-checkbox>
+        </div> -->
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary">Save</button>
+        <a (click)="closePopUp()" mat-raised-button color="warn">Close</a>
+        <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+    </div>
+</form>
+

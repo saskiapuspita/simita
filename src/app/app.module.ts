@@ -48,6 +48,10 @@ import { ModalDeleteDosenComponent } from './component/modal-delete-dosen/modal-
 import { ModalDetailDosenComponent } from './component/modal-detail-dosen/modal-detail-dosen.component';
 import { RekapitulasiPeminatanComponent } from './component/rekapitulasi-peminatan/rekapitulasi-peminatan.component';
 import { FinalisePeminatanMahasiswaComponent } from './component/finalise-peminatan-mahasiswa/finalise-peminatan-mahasiswa.component';
+import { PengajuanJudulPenelitianComponent } from './component/pengajuan-judul-penelitian/pengajuan-judul-penelitian.component';
+import { ModalAddPengajuanJudulPenelitianComponent } from './component/modal-add-pengajuan-judul-penelitian/modal-add-pengajuan-judul-penelitian.component';
+import { PengecekanJudulPenelitianComponent } from './component/pengecekan-judul-penelitian/pengecekan-judul-penelitian.component';
+import { ApprovalPengajuanJudulPenelitianComponent } from './component/approval-pengajuan-judul-penelitian/approval-pengajuan-judul-penelitian.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +95,11 @@ import { FinalisePeminatanMahasiswaComponent } from './component/finalise-pemina
     ModalDeleteDosenComponent,
     ModalDetailDosenComponent,
     RekapitulasiPeminatanComponent,
-    FinalisePeminatanMahasiswaComponent
+    FinalisePeminatanMahasiswaComponent,
+    PengajuanJudulPenelitianComponent,
+    ModalAddPengajuanJudulPenelitianComponent,
+    PengecekanJudulPenelitianComponent,
+    ApprovalPengajuanJudulPenelitianComponent
   ],
   imports: [
     BrowserModule,

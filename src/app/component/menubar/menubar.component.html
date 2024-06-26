@@ -55,6 +55,12 @@
         <mat-list-item *ngIf="decodedToken.role != 'admin'">
             <button routerLink="peminatan" mat-button><mat-icon>explore</mat-icon> Peminatan</button>
         </mat-list-item>
+        <mat-list-item *ngIf="decodedToken.role != 'admin'">
+            <button routerLink="pengecekanjudulpenelitian" mat-button><mat-icon>explore</mat-icon> Pengecekan Judul Penelitian</button>
+        </mat-list-item>
+        <mat-list-item *ngIf="decodedToken.role != 'admin'">
+            <button routerLink="pengajuanjudulpenelitian" mat-button><mat-icon>explore</mat-icon> Pengajuan Judul Penelitian</button>
+        </mat-list-item>
         <!-- <mat-list-item>
             <button routerLink="slider" mat-button><mat-icon>explore</mat-icon> Slider</button>
         </mat-list-item> -->
@@ -72,6 +78,9 @@
         </mat-list-item>
         <mat-list-item *ngIf="decodedToken.role == 'admin'">
             <button routerLink="rekapitulasipeminatan" mat-button><mat-icon>table</mat-icon> Rekapitulasi Peminatan</button>
+        </mat-list-item>
+        <mat-list-item *ngIf="decodedToken.role == 'admin'">
+            <button routerLink="approvalpengajuanjudulpenelitian" mat-button><mat-icon>table</mat-icon> Approval Pengajuan Judul Penelitian</button>
         </mat-list-item>
         <!-- <mat-list-item *ngIf="decodedToken.role == 'admin'">
             <button routerLink="table" mat-button><mat-icon>table</mat-icon> Table</button>
